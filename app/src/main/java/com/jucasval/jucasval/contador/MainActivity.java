@@ -40,9 +40,9 @@ public class MainActivity extends Activity {
 
     public void mostrarResultado(){
 
-        TextView textoResultado = (TextView) findViewById(R.id.textContador);
+        TextView textoResultado = (TextView) findViewById(R.id.contadorPulsaciones);
 
-        textoResultado.setText("Contador: "+contador);
+        textoResultado.setText(""+contador);
 
     }
 }//fin class MainActivity

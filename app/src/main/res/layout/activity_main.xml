@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,48 +9,80 @@
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp">
 
-    <Button
-        android:id="@+id/btResetear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Resetear"
-        android:layout_marginTop="232dp"
-        android:onClick="resetear"
-        app:layout_constraintTop_toBottomOf="@+id/textContador"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal|bottom">
 
-    <Button
-        android:id="@+id/btSuma"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Suma"
-        android:layout_marginBottom="16dp"
-        android:onClick="incrementar"
-        app:layout_constraintBottom_toTopOf="@+id/btResetear"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        <Button
+            android:id="@+id/btResetear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="resetear"
+            android:text="Resetear" />
 
-    <Button
-        android:id="@+id/btResta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Resta"
-        android:layout_marginTop="24dp"
-        android:onClick="decrementar"
-        app:layout_constraintTop_toBottomOf="@+id/btResetear"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
 
-    <TextView
-        android:id="@+id/textContador"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Contador: "
-        android:textSize="30sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="30dp" />
+    </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/tituloTexto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contador"
+            android:textSize="30sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_editor_absoluteY="30dp" />
+
+        <TextView
+            android:id="@+id/contadorPulsaciones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="56sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_editor_absoluteY="30dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical|center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btSuma"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:onClick="incrementar"
+            android:text="+"
+            android:textSize="70dp"/>
+        
+        <android.support.v4.widget.Space
+            android:layout_width="50dp"
+            android:layout_height="0dp" />
+
+        <Button
+            android:id="@+id/btResta"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:onClick="decrementar"
+            android:text="-"
+            android:textSize="70dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
