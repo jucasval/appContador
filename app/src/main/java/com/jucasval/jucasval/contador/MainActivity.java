@@ -3,16 +3,21 @@ package com.jucasval.jucasval.contador;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
     public int contador;
+    TextView textoResultado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        textoResultado = (TextView) findViewById(R.id.contadorPulsaciones);
 
         contador = 0;
     }
@@ -20,29 +25,38 @@ public class MainActivity extends Activity {
     public void incrementar(View vista){
 
         contador++;
-        mostrarResultado();
+        textoResultado.setText(""+contador);
+
 
     }
 
     public void decrementar(View vista){
 
         contador--;
-        mostrarResultado();
+        if(contador<0){
+            CheckBox negativos = (CheckBox)findViewById(R.id.negativos);
+            if(!negativos.isChecked()){
+                contador = 0;
+            }
+        }
+        textoResultado.setText(""+contador);
+
 
     }
 
     public void resetear(View vista){
 
-        contador = 0;
-        mostrarResultado();
-
-    }
-
-    public void mostrarResultado(){
-
-        TextView textoResultado = (TextView) findViewById(R.id.contadorPulsaciones);
-
+        EditText n_reseteo = (EditText)findViewById(R.id.valorReseteo);
+        try {
+            contador = Integer.parseInt(n_reseteo.getText().toString());
+        }catch(Exception e){
+            contador = 0;
+        }
+        n_reseteo.setText("");
         textoResultado.setText(""+contador);
 
+
     }
+
+
 }//fin class MainActivity
