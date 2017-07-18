@@ -32,6 +32,7 @@ public class MainActivity extends Activity {
         n_reseteo.setOnEditorActionListener(teclado);
     }
 
+    //persistencia de datos con Bundle
     public void onSaveInstanceState(Bundle estado){
 
         estado.putInt("cuenta",contador);
@@ -39,6 +40,7 @@ public class MainActivity extends Activity {
 
     }
 
+    //persistencia de datos con Bundle
     public void onRestoreInstanceState(Bundle estado){
 
         super.onRestoreInstanceState(estado);
@@ -46,6 +48,9 @@ public class MainActivity extends Activity {
         textoResultado.setText(""+contador);
 
     }
+
+    
+
 
     public void incrementar(View vista){
 
