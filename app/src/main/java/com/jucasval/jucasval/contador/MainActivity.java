@@ -24,10 +24,27 @@ public class MainActivity extends Activity {
 
         contador = 0;
 
+        textoResultado.setText(""+contador);
+
         //ponemos a la escucha el teclado
         EventoTeclado teclado = new EventoTeclado();
         EditText n_reseteo  = (EditText)findViewById(R.id.valorReseteo);
         n_reseteo.setOnEditorActionListener(teclado);
+    }
+
+    public void onSaveInstanceState(Bundle estado){
+
+        estado.putInt("cuenta",contador);
+        super.onSaveInstanceState(estado);
+
+    }
+
+    public void onRestoreInstanceState(Bundle estado){
+
+        super.onRestoreInstanceState(estado);
+        contador = estado.getInt("cuenta");
+        textoResultado.setText(""+contador);
+
     }
 
     public void incrementar(View vista){
