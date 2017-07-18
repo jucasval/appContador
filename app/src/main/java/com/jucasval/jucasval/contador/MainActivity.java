@@ -1,7 +1,9 @@
 package com.jucasval.jucasval.contador;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -32,6 +34,7 @@ public class MainActivity extends Activity {
         n_reseteo.setOnEditorActionListener(teclado);
     }
 
+     /*
     //persistencia de datos con Bundle
     public void onSaveInstanceState(Bundle estado){
 
@@ -41,6 +44,7 @@ public class MainActivity extends Activity {
     }
 
     //persistencia de datos con Bundle
+
     public void onRestoreInstanceState(Bundle estado){
 
         super.onRestoreInstanceState(estado);
@@ -48,8 +52,47 @@ public class MainActivity extends Activity {
         textoResultado.setText(""+contador);
 
     }
+    /*
 
-    
+    //PERSISTENCIA DE DATOS CON SharedPreferences. Tenemos que sobreescribir los métodos de la
+    //clase Activity onPause() y onResume()
+    /*
+     * 1.- Crear u obtener objeto SharedPreferences
+     * 2.- Hacer editable el obj SharedPreferences
+     * 3.- Establecer información a almacenar
+     * 4.- Transferir la información a SharedPreferences
+     */
+
+    public void onPause(){
+        super.onPause();
+
+        //1.- Crear u obtener objeto SharedPreferences
+        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
+
+        //2.- Hacer editable el obj SharedPreferences
+        SharedPreferences.Editor miEditor = datos.edit();
+
+        //3.- Establecer información a almacenar
+        miEditor.putInt("cuenta", contador);
+
+        //4.- Transferir la información a SharedPreferences
+        miEditor.apply();
+
+    }
+
+    public void onResume(){
+        super.onResume();
+
+        //1.- Crear u obtener objeto SharedPreferences
+        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
+
+        //2.- Recuperamos la informacion del SharedPreferences cuando se cerró la aplicación
+        contador=datos.getInt("cuenta", 0);
+
+        //3.- Damos el valor a la vista
+        textoResultado.setText(""+contador);
+    }
+
 
 
     public void incrementar(View vista){
